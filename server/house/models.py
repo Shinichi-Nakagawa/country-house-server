@@ -1,10 +1,12 @@
 from django.db import models
+from datetime import datetime as dt
 
 
 class HouseMetrics(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     place = models.TextField(null=False, blank=False)
     temperature = models.FloatField(null=False, blank=False)
+    tempertime = models.DateTimeField(null=False, blank=False)
     lon = models.FloatField(null=False, blank=False)
     lat = models.FloatField(null=False, blank=False)
     memo = models.CharField(max_length=255, null=True, blank=False)
@@ -16,10 +18,11 @@ class HouseMetrics(models.Model):
 
     def save(self, *args, **kwargs):
         """
+        保存時の処理
         """
+        # 日付をDatetimeに変換
         super(HouseMetrics, self).save(*args, **kwargs)
-
         # limit the number of instances retained
-        snippets = HouseMetrics.objects.all()
-        if len(snippets) > 50000:
-            snippets[0].delete()
+        metrics = HouseMetrics.objects.all()
+        if len(metrics) > 50000:
+            metrics[0].delete()
