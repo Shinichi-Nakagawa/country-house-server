@@ -15,18 +15,19 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='HouseMetrics',
             fields=[
-                ('id', models.AutoField(serialize=False, auto_created=True, verbose_name='ID', primary_key=True)),
+                ('id', models.AutoField(auto_created=True, verbose_name='ID', primary_key=True, serialize=False)),
                 ('created', models.DateTimeField(auto_now_add=True)),
                 ('place', models.TextField()),
                 ('temperature', models.FloatField()),
+                ('tempertime', models.DateField()),
                 ('lon', models.FloatField()),
                 ('lat', models.FloatField()),
                 ('memo', models.CharField(null=True, max_length=255)),
                 ('owner', models.ForeignKey(to=settings.AUTH_USER_MODEL, related_name='house_metrics')),
             ],
             options={
-                'db_table': 'house_metrics',
                 'ordering': ('created',),
+                'db_table': 'house_metrics',
             },
             bases=(models.Model,),
         ),

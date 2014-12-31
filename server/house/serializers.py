@@ -11,6 +11,7 @@ from django.contrib.auth.models import User
 
 class HouseMetricsSerializer(serializers.HyperlinkedModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
+    tempertime = serializers.DateTimeField(input_formats=('%Y/%m/%d %H:%M', ))
 
     class Meta:
         model = HouseMetrics
@@ -18,6 +19,7 @@ class HouseMetricsSerializer(serializers.HyperlinkedModelSerializer):
             'owner',
             'place',
             'temperature',
+            'tempertime',
             'memo',
             'lon',
             'lat'
