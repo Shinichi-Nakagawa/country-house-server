@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'rest_framework',
     'house',
     'django_jinja',
+    'gunicorn',
 )
 
 MIDDLEWARE_CLASSES = (
