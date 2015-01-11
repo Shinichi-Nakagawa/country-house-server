@@ -1,5 +1,4 @@
 from django.db import models
-from datetime import datetime as dt
 
 
 class HouseMetrics(models.Model):
@@ -9,7 +8,7 @@ class HouseMetrics(models.Model):
     tempertime = models.DateTimeField(null=False, blank=False)
     lon = models.FloatField(null=False, blank=False)
     lat = models.FloatField(null=False, blank=False)
-    memo = models.CharField(max_length=255, null=True, blank=False)
+    memo = models.CharField(max_length=255, null=True, blank=True)
     owner = models.ForeignKey('auth.User', related_name='house_metrics')
 
     class Meta:

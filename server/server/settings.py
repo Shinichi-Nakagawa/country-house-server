@@ -22,7 +22,7 @@ SECRET_KEY = 't$gcihfgq-nkq26_oua7nk_(_@x1vay)t+%-#)gxz#(8$9398='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -103,3 +103,9 @@ REST_FRAMEWORK = {
 LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'locale')
 )
+
+# fluentd
+FLUENT_HOST = '192.168.33.12'
+FLUENT_PORT = 8888
+FLUENT_URL = 'http://{host}:{port}/mongo.test'.format(**{'host': FLUENT_HOST, 'port': FLUENT_PORT})
+FLUENT_HEADERS = {'Content-type': 'application/json', 'Accept': 'text/plain'}
